@@ -16,8 +16,8 @@ def get_old_glookup(filename=OLD_GLOOKUP_PATH):
         return ""
 
 def get_new_glookup():
-    p = Popen(["glookup"], stdout=PIPE)
-    return p.stdout.read()
+    p = Popen(["glookup"], stdout=PIPE, stderr=PIPE)
+    return "%s\n%s" % (p.stdout.read(), p.stderr.read())
 
 def email_address():
     return "%s@imail.eecs.berkeley.edu" % getuser()
